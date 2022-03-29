@@ -1,8 +1,9 @@
 const { response } = require("express");
-const BooksAndAuthorSchema = require("../models/BooksAndAuthorSchema");
+const Books = require("../models/book");
+const Author = require("../models/author");
 
 const getBooks = async (req, res = response) => {
-  const books = await BooksAndAuthorSchema.find();
+  const books = await Books.find();
   res.json({
     ok: true,
     msg: "i am get books",
@@ -12,7 +13,7 @@ const getBooks = async (req, res = response) => {
 
 const getBookById = async (req, res = response) => {
   const eventoId = req.params.id;
-  const books = await BooksAndAuthorSchema.findById(eventoId);
+  const books = await Books.findById(eventoId);
   res.json({
     ok: true,
     msg: "i am get books by id",
@@ -40,7 +41,7 @@ const getAuthorById = async (req, res = response) => {
 const postAuthor = async (req, res = response) => {
   const { first_name, last_name } = req.body;
   try {
-    let author = new BooksAndAuthorSchema(req.body);
+    let author = new Author(req.body);
     const authorCompare = await Author.findOne({ first_name });
     if (authorCompare) {
       return res.status(400).json({
@@ -66,7 +67,7 @@ const postBook = async (req, res = response) => {
   const { name, isbn } = req.body;
   try {
     let book = new Books(req.body);
-    const bookCompare = await BooksAndAuthorSchema.findOne({ name });
+    const bookCompare = await Author.findOne({ name });
     if (!bookCompare) {
       return res.status(400).json({
         ok: false,
