@@ -17,6 +17,9 @@ app.use(express.json());
 //auth path
 app.use("/api/auth", require("./routes/auth"));
 
+//events.path
+app.use("/api/events", require("./routes/events"));
+
 //Listen Requests
 app.listen(process.env.PORT, () =>
   console.log(`Servidor corriendo en ${process.env.PORT}`)

@@ -49,7 +49,7 @@ const login = async (req, res = response) => {
     if (!user) {
       return res.status(400).json({
         ok: false,
-        msg: "El usuario no existe con ese email",
+        msg: "the user does not exist with this email",
       });
     }
 
@@ -72,7 +72,7 @@ const login = async (req, res = response) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "Por favor hable con el administrador",
+      msg: "Please talk to the administrator",
     });
   }
 };
