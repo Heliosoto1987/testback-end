@@ -3,9 +3,38 @@ const Books = require("../models/book");
 const Author = require("../models/author");
 
 const getBooks = async (req, res = response) => {
+  const books = await Books.find();
   res.json({
     ok: true,
-    msg: "Vamos por buen camino",
+    msg: "i am get books",
+    books,
+  });
+};
+
+const getBookById = async (req, res = response) => {
+  const eventoId = req.params.id;
+  const books = await Books.findById(eventoId);
+  res.json({
+    ok: true,
+    msg: "i am get books by id",
+    books,
+  });
+};
+
+const getAuthors = async (req, res = response) => {
+  res.json({
+    ok: true,
+    msg: "i am get Authors",
+  });
+};
+
+const getAuthorById = async (req, res = response) => {
+  const eventoId = req.params.id;
+  const author = await Author.findById(eventoId);
+  res.json({
+    ok: true,
+    msg: "i am get author by id",
+    author,
   });
 };
 
@@ -64,4 +93,7 @@ module.exports = {
   getBooks,
   postAuthor,
   postBook,
+  getBookById,
+  getAuthors,
+  getAuthorById,
 };
