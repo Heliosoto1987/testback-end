@@ -10,6 +10,11 @@ const BookSchema = Schema({
     require: false,
     unique: true,
   },
+  author: {
+    type: String,
+    require: false,
+    unique: true,
+  },
 });
 
 module.exports = model("book", BookSchema);
