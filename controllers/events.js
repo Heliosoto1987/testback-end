@@ -29,9 +29,11 @@ const getBookById = async (req, res = response) => {
 };
 
 const getAuthors = async (req, res = response) => {
+  const author = await Author.find();
   res.json({
     ok: true,
     msg: "i am get Authors",
+    author,
   });
 };
 
