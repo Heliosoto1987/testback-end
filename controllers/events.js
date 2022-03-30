@@ -12,13 +12,20 @@ const getBooks = async (req, res = response) => {
 };
 
 const getBookById = async (req, res = response) => {
-  const eventoId = req.params.id;
-  const books = await Books.findById(eventoId);
-  res.json({
-    ok: true,
-    msg: "i am get books by id",
-    books,
-  });
+  const eventId = req.params.id;
+  const eventAuthor = req.body;
+  try {
+    const books = await Books.findById(eventId);
+    const author = await Author.find(eventAuthor);
+    res.json({
+      ok: true,
+      msg: "i am get books by id",
+      books,
+      author,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getAuthors = async (req, res = response) => {
