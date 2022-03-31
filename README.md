@@ -14,8 +14,8 @@ developing
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
 To Start Server:
-
-`npm run dev`
+"npm install"
+"npm run dev"
 
 End Points:
 https://testbookhelio.herokuapp.com/api/auth/register | Register - POST
